@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+    <modelVersion>4.0.0</modelVersion>
+  
+    <groupId>com.example</groupId>
+    <artifactId>httpbin-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  
+    <properties>
+        <!-- Newman version -->
+        <newman.version>5.2.3</newman.version>
+        <!-- Path to Postman collection file -->
+        <postman.collection>httpbin.json</postman.collection>
+        <!-- Path to Postman environment file -->
+        <postman.environment>HttpBinenvironment.json</postman.environment>
+        <!-- Path to output JSON report file -->
+        <newman.report>report.json</newman.report>
+        <!-- Path to Allure results -->
+        <allure.results>allure-results</allure.results>
+        <!-- Path to Allure report -->
+        <allure.report>allure-report</allure.report>
+    </properties>
+  
+    <dependencies>
+        <!-- Newman dependency -->
+        <dependency>
+            <groupId>io.github.newman</groupId>
+            <artifactId>newman</artifactId>
+            <version>${newman.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+  
+    <build>
+        <plugins>
+            <!-- Maven Exec Plugin to execute Newman -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>newman</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Command to execute Newman -->
+                            <executable>newman</executable>
+                            <!-- Arguments for Newman command -->
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>${postman.collection}</argument>
+                                <argument>-e</argument>
+                                <argument>${postman.environment}</argument>
+                                <argument>--reporters</argument>
+                                <argument>json</argument>
+                                <argument>--reporter-json-export</argument>
+                                <argument>${newman.report}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Allure Maven Plugin -->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <reportVersion>2.13.9</reportVersion>
+                    <resultsDirectory>${allure.results}</resultsDirectory>
+                    <reportDirectory>${allure.report}</reportDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
