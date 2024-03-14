@@ -1,0 +1,18 @@
+Created by mehmet.eskici on 14.03.2024
+This is a concept file with following syntax for each concept.
+
+# Unsuccessful register
+* a_Application opened
+* a_Click on My Account button
+* a_Click register button
+* a_Click register button with null values
+* a_Click error message
+
+# Successful register
+* Write "Abdullah" name
+* Write "Deneme" surname
+* Write "adsasddaasdasds@gmail.com" email
+* Write "12345asd" password
+* Write repeat "12345asd" password
+* Click confirm checkbox
+* a_Click register butonnn

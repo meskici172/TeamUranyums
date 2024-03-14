@@ -1,0 +1,24 @@
+Created by mehmet.eskici on 14.03.2024
+This is a concept file with following syntax for each concept.
+
+# Unsuccessful login
+* Application opened
+* Click on My Account button
+* Invalid "denemehotmail.com" email written
+* Invalid "12345asd" password written
+* Click button
+* Click error message
+* Click back button
+
+# Successful login
+* Click on My Account buttonn
+* Write "asokaosfkaso@hotmail.com" in the e-mail field
+* Write "test1234" in the password field
+* Click login button
+* Login control
+
+# Payment
+* Click searchButton
+* Write "harry potter" in searchBox
+* Click first search result
+* Click first addToCart button
